@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper namespace="diet">
+	<insert id = "add" parameterType="diet">
+		insert into diet(DIETNO,scode,DIETDATE,MAINDISH,SIDEDISH)
+		values(
+			#{dietNo:INTEGER},
+			#{scode:VARCHAR},
+			#{dietDate:DATE},
+			#{mainDish:VARCHAR},
+			#{sideDish:VARCHAR}
+		)
+	</insert>
+	
+	<update id = "update" parameterType="diet">
+		update diet set
+			scode = #{scode:INTEGER},
+			DIETDATE = #{dietDate:DATE},
+			MAINDISH = #{mainDish:VARCHAR},
+			SIDEDISH = #{sideDish:VARCHAR}
+		where
+		DIETNO= #{dietNo:INTEGER}		
+	</update>
+	
+	<select id = "getDietNo" resultType="int">
+		select diet_no.nextVal
+		from dual
+	</select>
+	
+	<select id = "search5Diet" resultType="diet">
+	    SELECT dietNo, scode, to_char(DIETDATE, 'yyyy-mm-dd') dietDate, mainDish, sideDish
+	    FROM diet
+	    where (dietdate BETWEEN to_date(to_char(TRUNC(SYSDATE, 'IW'), 'yyyymmdd')) and to_date(to_char(TRUNC(SYSDATE, 'IW'), 'yyyymmdd')) + 4.99999)
+		ORDER BY DIETDATE, SCODE
+	</select>
+	
+	<select id="searchPrefer" parameterType="int" resultType="diet">
+	SELECT a.maindish maindish, b.mno mno
+	FROM(SELECT scode, maindish
+		 FROM DIET
+		 WHERE TO_CHAR(dietDate, 'yyyy-mm-dd') = TO_CHAR(SYSDATE, 'yyyy-mm-dd')
+		 ) a, (SELECT prefer , mno
+			  FROM member
+			  WHERE prefer IS not NULL ) b
+	WHERE b.prefer LIKE '%'||a.maindish||'%'
+	AND mno=#{mno:INTEGER}
+	</select>
+	
+	<select id = "search" parameterType="HashMap" resultType="diet">
+		select dietNo, scode, to_char(DIETDATE, 'yyyy-mm-dd') dietDate, mainDish, sideDish
+		from diet 
+		where scode = #{scode:VARCHAR} and dietDate = #{dietDate:DATE}
+	</select>
+	
+	<select id = "searchDiet" parameterType="int" resultType="diet">
+		select dietNo, scode, to_char(DIETDATE, 'yyyy-mm-dd') dietDate, mainDish, sideDish
+		from diet 
+		where dietNo = #{dietNo:INTEGER}
+	</select>
+	
+	<delete id = "delete" parameterType="int">
+		delete from diet
+		where DIETNO= #{dietNo:INTEGER}
+	</delete>
+	
+</mapper>	
+

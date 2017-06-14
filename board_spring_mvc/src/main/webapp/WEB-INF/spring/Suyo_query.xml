@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+	
+<!--여러 도메인을 위한 쿼리 xml를 작성할 때  도메인을 식별하기 위해 
+    namespace 부여 
+=> sqlSession.쿼리메서드("식별자", paramdata);
+    식별자 =>  namespace.id
+  ex)sqlSession.selectOne("board.search", paramdata);    
+-->	
+
+<mapper namespace="suyo">
+	
+	<insert id="insert" parameterType="suyo">
+		insert into suyo(dietNo, mno)
+		values(
+			#{dietNo:INTEGER}
+			, #{mno:INTEGER}
+			)
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		delete from suyo where dietNo=#{dietNo:INTEGER} and mno = #{mno:INTEGER}
+	</delete>
+	
+	<select id="getSuyoCount" parameterType="suyo" resultType="int">
+		select count(*)
+		from suyo
+		where dietNo = #{dietNo:INTEGER}
+	</select>
+	
+	<select id="getSuyoCountAll" resultType="suyo">
+		select di.dietno "dietNo", count(*) "suyoCountAll"
+		from diet di, suyo su
+		where di.dietno = su.dietno(+)
+		group by di.dietno
+		order by di.dietno
+	</select>
+	
+	<select id="searchSuyo" parameterType="suyo" resultType="suyo">
+		select *
+		from suyo
+		where dietNo=#{dietNo:INTEGER} and mno=#{mno:INTEGER}
+	</select>
+</mapper>
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration>
+<!--logging 대상 : 명령창-ConsoleAppender, 파일-DailyRollingFileAppender, 디비   -->
+
+<!--appender 태그 : logging 대상을 위한 로깅 방법 설정  -->
+  <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d %-5p (%F:%L - %M) - %m%n" />
+    </layout>
+  </appender>
+  
+  <appender name="DAILYFILEAPPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="append" value="true" />
+        <param name="file" value="c:/temp/log/logfile.log" />
+        <param name="datePattern" value="'.'yyyyMMdd" />
+        <layout class="org.apache.log4j.PatternLayout">
+              <param name="ConversionPattern" value="[%d] %-5p - %C{1}.%M(%L) | %m%n" />
+        </layout>
+  </appender>
+  <category name="com">
+    <priority value="debug"/>
+    <appender-ref ref="DAILYFILEAPPENDER"/>
+  </category>
+  <root>
+    <priority value="debug" />
+    <appender-ref ref="stdout" />
+  </root>
+</log4j:configuration>
+
+
+

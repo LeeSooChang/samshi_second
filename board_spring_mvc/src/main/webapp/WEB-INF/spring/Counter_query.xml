@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper namespace = "counter">
+	<select id = "search" parameterType="String" resultType="counter">
+		select to_char(cdate, 'yyyy-mm-dd') cdate, mcnt, icnt, hcnt, ecnt
+		from counter
+		where to_char(cdate, 'yyyy-mm-dd') = #{cdate:VARCHAR}
+	</select>
+	
+	<update id = "update" parameterType="counter">
+		update counter set mcnt = #{mcnt:INTEGER}, icnt = #{icnt:INTEGER}, hcnt = #{hcnt:INTEGER}, ecnt= #{ecnt:INTEGER}
+		where to_char(cdate, 'yyyy-mm-dd') = #{cdate:VARCHAR}
+	</update>
+	
+	<insert id = "insert" parameterType="counter">
+		insert into counter(cdate, mcnt, icnt, hcnt, ecnt)
+		values(#{cdate:VARCHAR}, #{mcnt:INTEGER}, #{icnt:INTEGER}, #{hcnt:INTEGER}, #{ecnt:INTEGER})
+	</insert>
+</mapper>

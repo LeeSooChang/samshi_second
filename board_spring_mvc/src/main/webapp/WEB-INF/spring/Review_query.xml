@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+	
+
+<mapper namespace="review">
+	<insert id="insert" parameterType="review">
+		insert into reviewboard(RNO,MNO,SPOINT,COMMENTS,scode,FNAME,REGDATE)
+		values(reviewboard_no.nextval
+			   , #{mno:INTEGER}
+			   , #{spoint:INTEGER}
+			   , #{comments:VARCHAR}
+			   , #{scode:INTEGER}
+			   , #{fname:VARCHAR}
+			   , sysdate)
+	</insert>
+	
+	<update id="update" parameterType="review">
+	update reviewboard set SPOINT=#{spoint:INTEGER}, fname=#{fname:VARCHAR}, COMMENTS=#{comments:VARCHAR}
+	where rno= #{rno} or(rno= #{rno} and #{mno} in (select mno from member where grade='Y'))
+	</update>
+	
+	<delete id="delete" parameterType="int">
+	 delete from reviewboard where rno=#{rno}
+	</delete>
+	
+	<select id="search" parameterType="int" resultType="review">
+		SELECT *
+		from reviewboard
+      	where rno = #{rno}
+	</select>
+	
+	<select id="searchAll" parameterType="reviewpagebean" resultType="review" >
+		SELECT rno, mno, spoint, comments, scode, fname, to_char(regdate, 'yyyy-mm-dd') regdate
+		from reviewBoard
+		<where>
+		<if test = "word != null">
+			<choose>
+				<when test="key== 'rno'">
+					rno=#{word}
+				</when>
+				<when test="key== 'mno'">
+					mno=#{word}
+				</when>
+				<when test="key== 'spoint'">
+					spoint like '%'||#{word}||'%'
+				</when>
+				<when test="key== 'scode'">
+					scode like '%'||#{word}||'%'
+				</when>
+				<when test="key== 'fname'">
+					fname like '%'||#{word}||'%'
+				</when>
+				<when test="key== 'comments'">
+					comments like '%'||#{word}||'%'
+				</when>
+			</choose>
+		</if>
+		</where>
+		order by rno desc
+		
+	</select>	
+	<select id="getCount" parameterType="reviewpagebean" resultType="int" >
+		SELECT count(*)
+		from reviewboard
+		<where>
+		<if test = "word != null">
+			<choose>
+				<when test="key== 'rno'">
+					rno=#{word}
+				</when>
+				<when test="key== 'spoint'">
+					spoint=#{word}
+				</when>
+				<when test="key== 'fname'">
+					fname like '%'||#{word}||'%'
+				</when>
+				<when test="key== 'comments'">
+					comments like '%'||#{word}||'%'
+				</when>
+			</choose>
+		</if>
+		</where>
+	</select>
+	
+	<select id="getReviewNo" resultType="int">
+		select reviewboard_no.nextval from dual
+	</select>
+	
+</mapper>
