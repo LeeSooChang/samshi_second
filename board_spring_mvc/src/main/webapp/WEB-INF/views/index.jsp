@@ -53,7 +53,7 @@ function MM_openBrWindow(theURL,winName,features) { //v2.0
 }
 function openpopup(){
  if (getCookie('event') != 'checked') {
-  window.open("open.jsp","openPop", "width=400, height=400");
+  window.open("open.jsp","openPop", "width=330, height=330");
  }
 }
 </script>
@@ -68,6 +68,9 @@ function openpopup(){
 <link href="css/theme.css" rel="stylesheet">
 <link href="css/magnific-popup.css" rel="stylesheet">
 <link href="css/login.css" rel="stylesheet">
+<style type="text/css">
+.text-name {color:#BDBDBD;}
+</style>
 </head>
 
 <!-- Body Start!! -->
@@ -407,12 +410,12 @@ function openpopup(){
 	<div class="clearfix hidden-xs" style="width: 100%; height: 50px;"></div>
 </div>
 
-<div class="container-ourteam">
+<div class="container-ourteam" style="background-color: #222222">
 	<div class="container">
 		<div class="page-header" id="about">
-			<h1 class="text-center text-danger">Meet Our Team</h1>
+			<h1 class="text-center" style="color:white;">Meet Our Team</h1>
 		</div>
-		<div class="col-md-3 text-center">
+		<div class="col-md-3 text-center text-name">
 			<p>Ko Yu Ra</p>
 			<br />
 			<p>
@@ -421,7 +424,7 @@ function openpopup(){
 			</p>
 			<br />
 		</div>
-		<div class="col-md-3 text-center">
+		<div class="col-md-3 text-center text-name">
 			<p>Shin Yeon Seok</p>
 			<br />
 			<p>
@@ -430,7 +433,7 @@ function openpopup(){
 			</p>
 			<br />
 		</div>
-		<div class="col-md-3 text-center">
+		<div class="col-md-3 text-center text-name">
 			<p>Yu Jeong Jae</p>
 			<br />
 			<p>
@@ -439,7 +442,7 @@ function openpopup(){
 			</p>
 			<br />
 		</div>
-		<div class="col-md-3 text-center">
+		<div class="col-md-3 text-center text-name">
 			<p>Lee Soo Chang</p>
 			<br />
 			<p>
@@ -451,24 +454,24 @@ function openpopup(){
 	</div>
 </div>
 
-<footer id="subfooter" class="clearfix">
+<footer id="subfooter" class="clearfix" style="background-color: #222222">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3">
-				<p style="font-size: 18px;">
+				<p style="font-size: 18px; color:white;">
 					<span class="fa fa-thumbs-o-up text-danger"></span> VISIT US
 				</p>
 				<p>한전KDN 본관 2층 구내식당</p>
 			</div>
 			<div class="col-md-3">
-				<p style="font-size: 18px;">
+				<p style="font-size: 18px; color:white;">
 					<span class="fa fa-clock-o text-danger"></span> OPEN HOURS
 				</p>
 				<p>Mon-Fri : 8am-7pm</p>
 				<p>Sat-Sun : Closed</p>
 			</div>
 			<div class="col-md-3">
-				<p style="font-size: 18px;">
+				<p style="font-size: 18px; color:white;">
 					<span class="fa fa-map-marker text-danger"></span> CONTACTS
 				</p>
 				<p>전라남도 나주시 빛가람로 661</p>
@@ -478,7 +481,7 @@ function openpopup(){
 				</p>
 			</div>
 			<div class="col-md-3">
-				<p style="font-size: 18px;">
+				<p style="font-size: 18px; color:white;">
 					<span class="fa fa-envelope-o text-danger"></span> NEWSLETTER
 				</p>
 				<p>
@@ -491,14 +494,14 @@ function openpopup(){
 				</div>
 				</p>
 				<p>
-					<br />
+					<br/>
 				</p>
 			</div>
 		</div>
 	</div>
 </footer>
 
-<footer id="footer" class="clearfix">
+<!-- <footer id="footer" class="clearfix">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8"></div>
@@ -509,7 +512,7 @@ function openpopup(){
 			</div>
 		</div>
 	</div>
-</footer>
+</footer> -->
 
 <script type="text/javascript">
 	jQuery(function($) {

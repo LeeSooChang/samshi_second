@@ -6,53 +6,56 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <style type="text/css">
 
 html{overflow:hidden;}
-body{
-	background-color: black;
-	overflow:hidden;
-}
-
+body{overflow:hidden;} 
 #pop_top{
 	width: 100%;
-	height: 350px;
-	text-align: center;
-	font-size: 20px;
-	color: white;
+	height: 300px;
+	padding: 10px 10px 10px 10px;
 }
 
 #pop_bottom{
 	width: 100%;
 	height: 30px;
-	text-align: right;
-	color: white;
+ 	text-align: right;
+ 	padding-right: 5px;
 }
 </style>
-<script type="text/javascript">
-</script>
 </head>
 <body>
-<div id="pop_top" >
-	<small>(ID: ${mno})</small>
-	<div style="padding-top:20%">
-		<c:if test="${!empty preferList}">
-			<c:forEach var="preferList" items="${preferList}">
-			<p>오늘은 <span style="color:red"> ${preferList.mainDish}</span> 나오는 날입니다.</p>
-			</c:forEach>
-			<p>식사하러 오세요♥</p>	
-		</c:if>
-		<c:if test="${empty preferList }">
-			<p>안녕하세요</p>
-			<p>오늘도 좋은 하루 되세요:)</p>
-		</c:if>
+	<div id="pop_top">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">사원번호: ${mno }</h3>
+			</div>
+			<div class="panel-body">
+				<c:if test="${!empty preferList}">
+					<c:forEach var="preferList" items="${preferList}">
+						<p>
+							오늘은 <span style="color: red"> ${preferList.mainDish}</span> 
+							나오는 날입니다.
+						</p>
+					</c:forEach>
+					<p>식사하러 오세요:)</p>
+				</c:if>
+				<c:if test="${empty preferList }">
+					<p>안녕하세요</p>
+					<p>오늘도 좋은 하루 되세요:)</p>
+				</c:if>
+			</div>
+		</div>
 	</div>
+	<div id="pop_bottom">
+	<form id="form1" name="form1">
+				<input type="checkbox" name="nopopup"
+					onClick="javascript:set_nopopup('event','checked',1);">
+				하루동안 열지 않기
+	</form>
 </div>
-<div id="pop_bottom">
-<form id="form1" name="form1">
-<input type="checkbox" name="nopopup" onClick="javascript:set_nopopup('event','checked',1);"> 하루동안 열지 않기
-</form>
-</div>	
 </body>
 <script language="JavaScript">
 function gourl1()
