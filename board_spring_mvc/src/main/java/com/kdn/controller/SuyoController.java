@@ -90,6 +90,7 @@ public class SuyoController {
 					
 					if (isSuyo == null) {
 						suyoService.add(suyo);
+						//이벤트처리부탁드려요
 					} else {
 						try {
 							response.setContentType("text/html; charset=UTF-8");
@@ -131,6 +132,7 @@ public class SuyoController {
 					
 					if (isSuyo == null) {
 						suyoService.add(suyo);
+						// 이벤트 처리 부탁드려요
 					} else {
 						try {
 							response.setContentType("text/html; charset=UTF-8");
