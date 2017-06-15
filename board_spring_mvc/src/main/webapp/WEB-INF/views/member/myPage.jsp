@@ -100,7 +100,8 @@
     <div class="form-group">
       <label class="col-lg-2 control-label" for="prefer">Menu</label>
       <div class="col-lg-8">
-        <div class="form-control" id="prefer" name = "prefer" value = "${prefer}" align = "left">${prefer}</div>
+        <div class="form-control" id="prefer" name = "prefer" value = "${prefer}" align = "left"
+        style="height:50px; overflow:scroll;">${prefer}</div>
       </div>
     </div>
     <div class="form-group">

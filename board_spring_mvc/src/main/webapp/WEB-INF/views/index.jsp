@@ -332,7 +332,7 @@ function openpopup(){
 		<div class="page-header" id="services">
 			<h1 class="text-center text-default">Weekly Menu</h1>
 		</div>
-		<div class="clearfix hidden-xs" style="width: 100%; height: 50px;"></div>
+		<!-- <div class="clearfix hidden-xs" style="width: 100%; height: 50px;"></div> -->
 		<div class="row">
 			<div class="row text-center">
 					<c:if test = "${empty addMenuContent && empty updateMenuContent}">
