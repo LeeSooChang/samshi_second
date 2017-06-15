@@ -22,6 +22,8 @@ from suyo s, (	select dietno, dietdate
 				) d
 where s.dietno = d.dietno;
 
+select * from member;
+
 select * from diet;
 
 select * from suyo
