@@ -330,7 +330,7 @@ public class SuyoController {
 						response.setContentType("text/html; charset=UTF-8");
 						PrintWriter writer = response.getWriter();
 						writer.println("<script type='text/javascript'>");
-						writer.println("alert('한식을 선택하셨습니다.');");
+						writer.println("alert('이미 한식을 선택하셨습니다.');");
 						writer.println("history.go(-1);");
 						writer.println("</script>");
 						writer.flush();
@@ -372,7 +372,7 @@ public class SuyoController {
 						response.setContentType("text/html; charset=UTF-8");
 						PrintWriter writer = response.getWriter();
 						writer.println("<script type='text/javascript'>");
-						writer.println("alert('일품을 선택하셨습니다.');");
+						writer.println("alert('이미 일품을 선택하셨습니다.');");
 						writer.println("history.go(-1);");
 						writer.println("</script>");
 						writer.flush();
