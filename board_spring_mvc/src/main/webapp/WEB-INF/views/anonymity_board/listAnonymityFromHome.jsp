@@ -34,10 +34,12 @@ function getReivewBoard(ano) {
 	$('#checkAnonymityForm').modal();
 } 
 	
-function updateanoform(ano, mno){
-	console.log('ano updateForm');
-	$("#uano").val(ano);
-	$('#updateAnonymityForm').modal();
+	function updateanoform(ano, mno, uanotitle, uanocontents){
+		console.log('ano updateForm');
+		$("#uano").val(ano);
+		$("#uanotitle").val(uanotitle);
+		$("#uanocontents").val(uanocontents);
+		$('#updateAnonymityForm').modal();
 	
 }
 
@@ -174,7 +176,7 @@ function insertanoform(){
 					<form role="form" method="post" action="deleteAnonymity.do">
 						<input type="hidden" id="rano" name="ano" value="${ano }" />비밀번호
 						<input type="hidden" id="rmno" name="mno" value="${mno }" />
-						<input type="text" id="ranopw" name="anopw" />
+						<input type="password" id="ranopw" name="anopw" placeholder="불일치 시 수정불가" required/>
 						<button type="submit" class="close">
 							<span class="glyphicon glyphicon-ok"></span>삭제
 						</button>
@@ -234,7 +236,7 @@ function insertanoform(){
 										<c:forEach var="anonymity" items="${anonymityList}">
 											<tr id=${anonymity }>
 												<td><a href="#" class="btn btn-default"
-													onclick="updateanoform(${anonymity.ano})"> <em
+													onclick="updateanoform(${anonymity.ano}, ${anonymity.mno}, '${anonymity.anotitle}', '${anonymity.anocontents}')"> <em
 														class="fa fa-pencil"></em></a> <a href="#"
 													class="btn btn-danger"
 													onclick="removeanoform(${anonymity.ano})"><em

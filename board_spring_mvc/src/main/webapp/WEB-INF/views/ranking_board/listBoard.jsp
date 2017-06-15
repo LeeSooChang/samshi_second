@@ -38,7 +38,7 @@
 			</div>
 			</c:forEach>
 			<c:forEach var="rankingH" items="${rankingH }">
-			<div class="mix restaurant col-md-4">
+			<div class="mix restaurant col-md-4"ok>
 				<a href="images/gallery/${rankingH.img }" class="img-wrapper"> <img
 					class="img-responsive" src="images/gallery/${rankingH.img }" width="390px" height="180px"/>
 				</a>

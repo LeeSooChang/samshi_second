@@ -77,11 +77,8 @@
 					<form method="post" action="updateReview.do"
 						enctype="multipart/form-data">
 						<table align="center" width="300">
-							<%-- <tr height="50">
-								<td><label for="title">번호</label></td>
-								<td><input type="hidden" name="rno" id="urno"
+								<td colspan="2"><input type="hidden" name="rno" id="urno"
 									value="${urno }" /></td>
-							</tr> --%>
 							<tr height="50">
 								<td><label for="title">아이디</label></td>
 								<td><input type="text" name="mno" id="mno"
@@ -100,14 +97,14 @@
 							</tr>
 							<tr height="50">
 								<td><label for="title">메뉴</label></td>
-								<td><input type="text" name="fname" id="fname" /></td>
+								<td><input type="text" name="fname" id="ufname" value="${ufname }"/></td>
 							</tr>
 							<tr>
 								<td colspan="2"><label for="contents">코멘트</label></td>
 							</tr>
 							<tr>
-								<td colspan="2" align="center"><textarea name="comments"
-										id="comments" cols="30" rows="5" style="resize:none;"></textarea></td>
+								<td colspan="2" align="center"><textarea name="comments" value="${ucomments }"
+										id="ucomments" cols="30" rows="5" style="resize:none;"></textarea></td>
 							</tr>
 							<tr>
 								<td colspan="2" align="right">

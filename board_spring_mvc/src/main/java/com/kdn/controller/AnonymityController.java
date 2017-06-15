@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kdn.model.biz.AnonymityService;
 import com.kdn.model.biz.DietService;
@@ -45,7 +47,15 @@ public class AnonymityController {
 	
 	@Autowired
 	private ReviewService reviewService;
-
+	
+	@ExceptionHandler
+	public ModelAndView handler(Exception e) {
+		ModelAndView model = new ModelAndView("index");
+		model.addObject("msg", e.getMessage()); 
+		model.addObject("anonymityBoardContent", "ErrorHandler.jsp"); 
+		return model;
+		
+	}
 	@RequestMapping(value="listAnonymity.do", method=RequestMethod.GET)
 	public String listAnonymity(AnonymityPageBean anonymitybean, Model model, NoticePageBean noticebean, ReviewPageBean bean){
 		List<Anonymity> anonymityList = anonymityService.searchAll(anonymitybean);
