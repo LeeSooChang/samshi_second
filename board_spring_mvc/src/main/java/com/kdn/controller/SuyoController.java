@@ -77,8 +77,8 @@ public class SuyoController {
 		String date = findDiet.getDietDate();
 		Counter counter = counterService.search(date);
 		
-		
-		if (diffTwoDays == -1) {
+//		시연 위해서 오늘 수정 가능으로 변경 -1이 내일 
+		if (diffTwoDays == 0) {
 			
 			switch (dietScode) {
 			case 2:
@@ -212,26 +212,27 @@ public class SuyoController {
 				break;
 			}
 			
-		} else if (diffTwoDays == 0) {
+//			오늘 날짜 수정 가능?
+//		} else if (diffTwoDays == 0) {
+//			try {
+//				response.setContentType("text/html; charset=UTF-8");
+//				PrintWriter writer = response.getWriter();
+//				writer.println("<script type='text/javascript'>");
+//				writer.println("alert('오늘 식사 인원 집계가 완료되었습니다.');");
+//				writer.println("history.go(-1);");
+//				writer.println("</script>");
+//				writer.flush();
+//				return "index";
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//			
+		} else if (diffTwoDays < 0) {
 			try {
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter writer = response.getWriter();
 				writer.println("<script type='text/javascript'>");
-				writer.println("alert('오늘 식사 인원 집계가 완료되었습니다.');");
-				writer.println("history.go(-1);");
-				writer.println("</script>");
-				writer.flush();
-				return "index";
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-		} else if (diffTwoDays < -1) {
-			try {
-				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter writer = response.getWriter();
-				writer.println("<script type='text/javascript'>");
-				writer.println("alert('내일 날짜만 수정 가능합니다.');");
+				writer.println("alert('오늘 날짜만 수정 가능합니다.');");
 				writer.println("history.go(-1);");
 				writer.println("</script>");
 				writer.flush();
@@ -295,7 +296,8 @@ public class SuyoController {
 		
 		Suyo anotherSuyoExist = null;
 		
-		if (diffTwoDays == -1) {
+//		시연 위해서 오늘 수정 가능으로 변경 -1이 내일 
+		if (diffTwoDays == 0) {
 			
 			switch (dietScode) {
 			case 2:
@@ -421,25 +423,26 @@ public class SuyoController {
 				}
 			}
 			
-		} else if (diffTwoDays == 0) {
+//			오늘 날짜 수정 가능?
+//		} else if (diffTwoDays == 0) {
+//			try {
+//				response.setContentType("text/html; charset=UTF-8");
+//				PrintWriter writer = response.getWriter();
+//				writer.println("<script type='text/javascript'>");
+//				writer.println("alert('오늘 식사 인원 집계가 완료되었습니다.');");
+//				writer.println("history.go(-1);");
+//				writer.println("</script>");
+//				writer.flush();
+//				return "index";
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+		} else if (diffTwoDays < 0) {
 			try {
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter writer = response.getWriter();
 				writer.println("<script type='text/javascript'>");
-				writer.println("alert('오늘 식사 인원 집계가 완료되었습니다.');");
-				writer.println("history.go(-1);");
-				writer.println("</script>");
-				writer.flush();
-				return "index";
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (diffTwoDays < -1) {
-			try {
-				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter writer = response.getWriter();
-				writer.println("<script type='text/javascript'>");
-				writer.println("alert('내일 날짜만 수정 가능합니다.');");
+				writer.println("alert('오늘 날짜만 수정 가능합니다.');");
 				writer.println("history.go(-1);");
 				writer.println("</script>");
 				writer.flush();
