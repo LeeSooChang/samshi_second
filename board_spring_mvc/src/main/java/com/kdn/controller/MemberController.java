@@ -207,6 +207,9 @@ public class MemberController {
 		
 		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
 		
+		List<Suyo> suyoCountList = suyoService.getSuyoCountAll();
+		model.addAttribute("suyoCountList", suyoCountList);
+		
 //		익명게시판
 		List<Anonymity> anonymityList = anonymityService.searchAll(anonymitybean);
 		model.addAttribute("anonymityList", anonymityList);
