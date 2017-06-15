@@ -6,43 +6,59 @@
 
 <mapper namespace="ranking">
 	<select id="searchN" resultType="ranking" >
-		SELECT IMG
+SELECT img
+from
+(SELECT ROWNUM, IMG
 		FROM RANKINGBOARD RK,
 			 (SELECT DISTINCT FNAME, AVG(SPOINT) OVER(PARTITION BY FNAME) SPOINT, SCODE
 			  FROM REVIEWBOARD
      		  WHERE SCODE = 4
      		  ORDER BY SPOINT DESC) R
 		WHERE RK.RKNAME = R.FNAME AND RK.SCODE =4
+        ORDER BY r.spoint desc) 
+WHERE ROWNUM &lt; 5
 		
 	</select>	
 	<select id="searchM" resultType="ranking" >
-		SELECT IMG
+		SELECT img
+from
+(SELECT ROWNUM num, IMG
 		FROM RANKINGBOARD RK,
 			 (SELECT DISTINCT FNAME, AVG(SPOINT) OVER(PARTITION BY FNAME) SPOINT, SCODE
 			  FROM REVIEWBOARD
      		  WHERE SCODE = 1
      		  ORDER BY SPOINT DESC) R
 		WHERE RK.RKNAME = R.FNAME AND RK.SCODE =1
+        ORDER BY r.spoint desc) a
+WHERE a.num &lt; 5
 		
 	</select>	
 	<select id="searchH" resultType="ranking" >
-		SELECT IMG
+		SELECT img
+from
+(SELECT ROWNUM num, IMG
 		FROM RANKINGBOARD RK,
 			 (SELECT DISTINCT FNAME, AVG(SPOINT) OVER(PARTITION BY FNAME) SPOINT, SCODE
 			  FROM REVIEWBOARD
      		  WHERE SCODE = 3
      		  ORDER BY SPOINT DESC) R
 		WHERE RK.RKNAME = R.FNAME AND RK.SCODE =3
+        ORDER BY r.spoint desc) a
+WHERE a.num &lt; 5
 		
 	</select>	
 	<select id="searchI" resultType="ranking" >
-		SELECT IMG
+		SELECT img
+from
+(SELECT ROWNUM num, IMG
 		FROM RANKINGBOARD RK,
 			 (SELECT DISTINCT FNAME, AVG(SPOINT) OVER(PARTITION BY FNAME) SPOINT, SCODE
 			  FROM REVIEWBOARD
      		  WHERE SCODE = 2
      		  ORDER BY SPOINT DESC) R
 		WHERE RK.RKNAME = R.FNAME AND RK.SCODE =2
+        ORDER BY r.spoint desc) a
+WHERE a.num &lt; 5
 		
 	</select>	
 	<select id="getCount" parameterType="rankingpagebean" resultType="int" >
